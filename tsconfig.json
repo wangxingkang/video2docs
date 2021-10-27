@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "esnext",
+    "sourceMap": true,
+    "moduleResolution": "Node",
+    "skipLibCheck": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "declaration": true,
+    "isolatedModules": true,
+    "typeRoots": [
+      "node_modules/@types",
+    ],
+    "lib": ["ESNext"]
+  },
+}
