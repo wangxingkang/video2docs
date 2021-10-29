@@ -92,13 +92,13 @@ if (!gotTheLock) {
       .catch((e) => console.error('Failed check updates:', e));
   }
 
-  ipcMain.on('open-directory-dialog', (event, p: 'openFile' | 'openDirectory') => {
+  ipcMain.on('dialog:open-directory', (event, p: 'openFile' | 'openDirectory') => {
     dialog.showOpenDialog(
       {
         properties: [p]
       }
     ).then((result) => {
-      event.sender.send('selectedItem', result)
+      event.sender.send('dialog:selectedItem', result)
     })
   })
 }

@@ -4,9 +4,14 @@ const API_KEY = 'electron';
 
 const api = {
   versions: process.versions,
-  ipcRenderer,
   /**
-   * 获取主线程的相应
+   * 向主进程发送异步消息
+   */
+  callMain: (channel: string, ...args: any[]) => {
+    ipcRenderer.send(channel, ...args);
+  },
+  /**
+   * 获取主线程的响应
    * @param channel
    * @param callback
    */
@@ -16,6 +21,8 @@ const api = {
     });
   }
 } as const;
+
+ipcRenderer.send
 
 
 export type ExposedInMainWorld = Readonly<typeof api>;

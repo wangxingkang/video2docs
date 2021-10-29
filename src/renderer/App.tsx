@@ -1,34 +1,11 @@
-import React, { useState } from 'react';
-import logo from './logo.svg';
-import { useElectron } from '@/hooks';
+import React from 'react';
+import { SelectDirectory } from '@/components';
 import './App.css';
 
-const App: React.FC = () => {
-  const electron= useElectron();
-  const [count, setCount] = useState(0);
-
+export default () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button
-            onClick={() => {
-              console.log(window);
-              electron.ipcRenderer.send('open-directory-dialog', 'openDirectory');
-
-              electron.onResponse('selectedItem', result => {
-                console.log(result);
-              });
-            }}
-          >
-            count is: {count}
-          </button>
-        </p>
-      </header>
+      <SelectDirectory />
     </div>
   );
 };
-
-export default App;
