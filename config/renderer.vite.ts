@@ -11,7 +11,7 @@ export default defineConfig({
   root: RENDERER_DIR,
   resolve: {
     alias: {
-      '/@/': `${RENDERER_DIR}/`,
+      '@/': `${RENDERER_DIR}/`,
     },
   },
   plugins: [

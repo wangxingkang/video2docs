@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 // @ts-ignore
 import logo from './logo.svg';
-import { useElectron } from './hooks';
+import { useElectron } from '@/hooks';
 import './App.css';
 
 const App: React.FC = () => {
