@@ -1,7 +1,7 @@
 {
   "name": "video2docs",
   "version": "0.1.0",
-  "description": "",
+  "description": "将视频截图并转换为文档",
   "private": true,
   "scripts": {
     "start": "node ./scripts/watch.js"
