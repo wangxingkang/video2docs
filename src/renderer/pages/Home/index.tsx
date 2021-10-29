@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 export default () => {
   return (
     <div>
-      login page
+      home page
 
-      <Link to="/">跳转Home</Link>
+      <Link to="/login">跳转登录</Link>
     </div>
   )
 }
