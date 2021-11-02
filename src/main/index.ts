@@ -96,7 +96,7 @@ if (!gotTheLock) {
         properties: [p]
       }
     ).then((result) => {
-      event.sender.send('dialog:selectedItem', result)
+      event.sender.send('dialog:open-directory:selected', result)
     })
   })
 }
