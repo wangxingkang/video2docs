@@ -1,2 +1,2 @@
 export { isDir } from './isDir';
-export { readDir } from './readDir';
+export { getFileTreeByDir } from './getFileTreeByDir';

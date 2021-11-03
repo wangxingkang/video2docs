@@ -1,12 +1,15 @@
 import { contextBridge, ipcRenderer } from 'electron';
-import { isDir, readDir } from './utils';
+import { isDir, getFileTreeByDir } from './utils';
 
 const API_KEY = 'electron';
 
 const api = {
   versions: process.versions,
   isDir,
-  readDir,
+  /**
+   * 获取目录下的文件
+   */
+  getFileTreeByDir,
   /**
    * 向主进程发送异步消息
    */

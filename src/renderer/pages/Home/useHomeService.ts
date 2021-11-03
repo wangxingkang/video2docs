@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Form, message } from 'antd';
 import { useElectron } from '@/hooks';
+import { videoFormats } from '@/config';
 
 export function useHomeService() {
   const [treeData, setTreeData] = useState([]);
@@ -34,19 +35,34 @@ export function useHomeService() {
       return;
     }
 
-    const isDirResult = await electron.isDir(dir);
+    const isDirResult = electron.isDir(dir);
+
+    console.log(isDirResult);
 
     if (!isDirResult) {
       message.warning('目录不存在，请检查！');
+      return;
     }
 
-    electron.readDir(dir);
+    const fileTreeResult = await electron.getFileTreeByDir(dir, videoFormats);
+
+    if (fileTreeResult.status === 'error') {
+      message.warning(fileTreeResult.message);
+      return;
+    }
+
+    console.log(fileTreeResult.data);
+  }
+
+  const handleNext = () => {
+
   }
 
   return {
     form,
     electron,
     treeData,
+    handleNext,
     handleSelectDir,
     handleAnalyzeDir,
   }

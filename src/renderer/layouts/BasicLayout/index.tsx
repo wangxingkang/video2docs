@@ -2,9 +2,7 @@ import React from 'react';
 import { Layout } from 'antd';
 import styles from './index.module.less';
 
-const { Header, Content } = Layout;
-
-const logo = new URL('../../assets/logo.svg', import.meta.url).href
+const { Header, Content, Footer } = Layout;
 
 export const BasicLayout: React.FC = ({
   children,
@@ -13,12 +11,17 @@ export const BasicLayout: React.FC = ({
     <Layout>
       <Header className={styles.header}>
         <div className={styles.navbar}>
-          <img src={logo} />
+          <div className={styles.logo}>
+            倩宝转换
+          </div>
         </div>
       </Header>
       <Content className={styles.content}>
         {children}
       </Content>
+      <Footer className={styles.footer}>
+        Open-source MIT Licensed | © 2021-present
+      </Footer>
     </Layout>
   )
 }

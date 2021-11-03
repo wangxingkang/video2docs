@@ -7,12 +7,26 @@
   align-items: center;
   height: 64px;
 
-  > img {
+  .logo {
+    background: url('../../assets/logo.svg') no-repeat 0/contain;
+    padding-left: 56px;
+    display: inline-block;
     height: 40px;
+    color: #3882F5;
+    text-decoration-color: initial;
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 24px;
+    line-height: 40px;
   }
 }
 
 .content {
-  height: calc(100vh - 56px);
+  height: calc(100vh - 64px - 65px);
   padding: 24px;
+}
+
+.footer {
+  color: #b0b1ba;
+  text-align: center;
 }

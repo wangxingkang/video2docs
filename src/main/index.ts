@@ -90,6 +90,9 @@ if (!gotTheLock) {
       .catch((e) => console.error('Failed check updates:', e));
   }
 
+  /**
+   * 打开文件选择弹框，选择系统文件夹和文件
+   */
   ipcMain.on('dialog:open-directory', (event, p: 'openFile' | 'openDirectory') => {
     dialog.showOpenDialog(
       {
