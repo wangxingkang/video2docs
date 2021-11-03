@@ -4,7 +4,7 @@ import { useElectron } from '@/hooks';
 import { videoFormats } from '@/config';
 
 export function useHomeService() {
-  const [treeData, setTreeData] = useState([]);
+  const [list, setList] = useState<string[]>([]);
   const [form] = Form.useForm();
   const electron = useElectron();
 
@@ -51,7 +51,13 @@ export function useHomeService() {
       return;
     }
 
-    console.log(fileTreeResult.data);
+    if (!fileTreeResult.data) {
+      return;
+    }
+
+    message.success('目录解析成功！')
+
+    setList(fileTreeResult.data);
   }
 
   const handleNext = () => {
@@ -61,7 +67,8 @@ export function useHomeService() {
   return {
     form,
     electron,
-    treeData,
+    list,
+    getFileInfo: electron.getFileInfo,
     handleNext,
     handleSelectDir,
     handleAnalyzeDir,
