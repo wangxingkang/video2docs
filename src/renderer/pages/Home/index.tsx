@@ -30,6 +30,7 @@ export default () => {
           </Form>
           <Card
             style={{ marginTop: 16 }}
+            title={`文件列表${homeService.list.length > 0 ? ('(' + homeService.list.length + ')') : ''}`}
             extra={
               <Space>
                 <Button
@@ -41,7 +42,7 @@ export default () => {
                 </Button>
                 <Button
                   disabled={homeService.list.length === 0}
-
+                  onClick={homeService.handleNext}
                 >
                   下一步
                 </Button>
@@ -51,10 +52,10 @@ export default () => {
               borderBottom: '1px dashed #f0f0f0'
             }}
           >
-            {homeService.list.length === 0 && (
+            {!homeService.list.length && (
               <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
             )}
-            <div>
+            {!!homeService.list.length && (
               <List
                 itemLayout="horizontal"
                 dataSource={homeService.list}
@@ -68,7 +69,7 @@ export default () => {
                   )
                 }}
               />
-            </div>
+            )}
           </Card>
         </div>
       </div>

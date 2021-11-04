@@ -1,5 +1,5 @@
 import { contextBridge, ipcRenderer } from 'electron';
-import { isDir, getFileTreeByDir, getFileInfo } from './utils';
+import { isDir, getFileTreeByDir, getFileInfo, interceptImages } from './utils';
 
 const API_KEY = 'electron';
 
@@ -7,6 +7,7 @@ const api = {
   versions: process.versions,
   isDir,
   getFileInfo,
+  interceptImages,
   /**
    * 获取目录下的文件
    */

@@ -1,12 +1,12 @@
 import Home from '@/pages/Home';
-import Login from '@/pages/Login';
+import Workplace from '@/pages/Workplace';
 
 import { RouteProps } from './types';
 
 export const routes: RouteProps[] = [
   {
-    path: '/login',
-    component: Login
+    path: '/workplace',
+    component: Workplace
   },
   {
     path: '/',

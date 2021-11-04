@@ -7,8 +7,10 @@
     "start": "node ./scripts/watch.js"
   },
   "dependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
     "antd": "4.16.13",
     "electron-updater": "4.3.9",
+    "fluent-ffmpeg": "^2.1.2",
     "is-electron": "^2.2.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
@@ -16,6 +18,7 @@
   },
   "devDependencies": {
     "@types/electron-devtools-installer": "2.2.0",
+    "@types/fluent-ffmpeg": "^2",
     "@types/react": "^17",
     "@types/react-dom": "^17",
     "@types/react-router-dom": "^5",

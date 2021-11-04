@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { Form, message } from 'antd';
+import { useHistory } from 'react-router-dom';
 import { useElectron } from '@/hooks';
-import { videoFormats } from '@/config';
+import { videoFormats, STORAGE_KEYS } from '@/config';
 
 export function useHomeService() {
   const [list, setList] = useState<string[]>([]);
   const [form] = Form.useForm();
   const electron = useElectron();
+  const history = useHistory();
 
   /**
    * 选择目录
@@ -61,7 +63,9 @@ export function useHomeService() {
   }
 
   const handleNext = () => {
+    localStorage.setItem(STORAGE_KEYS.files, JSON.stringify(list));
 
+    history.push('/workplace')
   }
 
   return {
