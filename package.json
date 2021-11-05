@@ -4,7 +4,8 @@
   "description": "将视频截图并转换为文档",
   "private": true,
   "scripts": {
-    "start": "node ./scripts/watch.js"
+    "start": "node ./scripts/watch.js",
+    "release": "walrus release --skip-publish --skip-build"
   },
   "dependencies": {
     "@ffmpeg-installer/ffmpeg": "^1.1.0",
@@ -30,6 +31,8 @@
     "@types/react-dom": "^17",
     "@types/react-router-dom": "^5",
     "@vitejs/plugin-react-refresh": "1.3.6",
+    "@walrus/cli": "^1.3.4",
+    "@walrus/plugin-release": "^1.14.0",
     "cross-env": "7.0.3",
     "electron": "15.3.0",
     "electron-builder": "22.13.1",

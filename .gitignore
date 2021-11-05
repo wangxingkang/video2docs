@@ -6,3 +6,5 @@ thumbs.db
 types/env.d.ts
 
 .idea
+
+install-state.gz
