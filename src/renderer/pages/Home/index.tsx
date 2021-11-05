@@ -35,12 +35,22 @@ export default () => {
               <Space>
                 <Button
                   type="primary"
+                  size="small"
                   disabled={homeService.list.length > 0}
                   onClick={homeService.handleAnalyzeDir}
                 >
                   解析目录
                 </Button>
                 <Button
+                  danger
+                  size="small"
+                  disabled={homeService.list.length === 0}
+                  onClick={homeService.handleClear}
+                >
+                  清空文件
+                </Button>
+                <Button
+                  size="small"
                   disabled={homeService.list.length === 0}
                   onClick={homeService.handleNext}
                 >

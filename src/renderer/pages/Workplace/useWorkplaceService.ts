@@ -8,6 +8,7 @@ export function useWorkplaceService() {
   const [list, setList] = useState<string[]>([]);
   const history = useHistory();
   const electron = useElectron();
+  const [form] = Form.useForm();
 
   useEffect(
     () => {
@@ -20,10 +21,22 @@ export function useWorkplaceService() {
     []
   );
 
-  const handleStart = async () => {
+  const handleStartAll = async () => {
+    const interval = form.getFieldValue('interval');
+
+    if (typeof interval !== 'number' || !interval) {
+      return;
+    }
+
+    for (let i = 0; i < list.length; i++) {
+      await handleStart(list[i], interval);
+    }
+  }
+
+  const handleStart = async (filePath: string, interval: number) => {
     /** 1. 截图 */
-    const interceptResult = await electron.interceptImages(list[0], {
-      interval: 2
+    const interceptResult = await electron.interceptImages(filePath, {
+      interval
     });
 
     if (interceptResult.status === 'success' && interceptResult.data) {
@@ -42,8 +55,10 @@ export function useWorkplaceService() {
 
   return {
     list,
+    form,
+    getFileInfo: electron.getFileInfo,
     handleStart,
+    handleStartAll,
     handleReturn,
   }
-
 }

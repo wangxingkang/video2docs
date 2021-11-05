@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Form, message } from 'antd';
 import { useHistory } from 'react-router-dom';
 import { useElectron } from '@/hooks';
@@ -9,6 +9,14 @@ export function useHomeService() {
   const [form] = Form.useForm();
   const electron = useElectron();
   const history = useHistory();
+
+  useEffect(() => {
+    const data = localStorage.getItem(STORAGE_KEYS.files);
+
+    if (data) {
+      setList(JSON.parse(data));
+    }
+  }, [])
 
   /**
    * 选择目录
@@ -62,6 +70,11 @@ export function useHomeService() {
     setList(fileTreeResult.data);
   }
 
+  const handleClear = () => {
+    setList([]);
+    localStorage.setItem(STORAGE_KEYS.files, '');
+  }
+
   const handleNext = () => {
     localStorage.setItem(STORAGE_KEYS.files, JSON.stringify(list));
 
@@ -74,6 +87,7 @@ export function useHomeService() {
     list,
     getFileInfo: electron.getFileInfo,
     handleNext,
+    handleClear,
     handleSelectDir,
     handleAnalyzeDir,
   }
