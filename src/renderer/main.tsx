@@ -6,10 +6,8 @@ import { Routes } from '@/routers';
 import './global.less';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <ConfigProvider locale={zh_CN}>
-      <Routes />
-    </ConfigProvider>
-  </React.StrictMode>,
+  <ConfigProvider locale={zh_CN}>
+    <Routes />
+  </ConfigProvider>,
   document.getElementById('root'),
 );

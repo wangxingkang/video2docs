@@ -1,16 +1,18 @@
-import React from 'react';
-import { Form, Button, InputNumber, Space, Card, List } from 'antd';
+import React, { useRef } from 'react';
+import { Console } from 'console-feed';
+import { Form, Button, InputNumber, Space, Card, List, Modal } from 'antd';
 import { BasicLayout } from '@/layouts';
 import { useWorkplaceService } from './useWorkplaceService';
 import styles from './index.module.less';
 
 export default () => {
+  const root = useRef<HTMLDivElement>(null);
   const workplaceService = useWorkplaceService();
 
   return (
     <BasicLayout>
       <div className={styles.main}>
-        <div className={styles.content}>
+        <div className={styles.content} ref={root}>
           <Form form={workplaceService.form} layout="inline">
             <Form.Item>
               <Space>
@@ -63,6 +65,21 @@ export default () => {
             />
           </Card>
         </div>
+
+        <Modal
+          visible={workplaceService.consoleModal.visible}
+          maskClosable={false}
+          closable={false}
+          footer={null}
+          width={600}
+          className={styles.modal}
+          getContainer={root.current as HTMLElement}
+          onCancel={workplaceService.consoleModal.closeModal}
+        >
+          <div className={styles.console}>
+            <Console logs={workplaceService.logs} variant="dark" />
+          </div>
+        </Modal>
       </div>
     </BasicLayout>
   )
