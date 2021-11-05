@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 
-const {loadEnv} = require('vite');
-const {writeFileSync} = require('fs');
-const {resolve} = require('path');
+import { loadEnv } from 'vite';
+import { writeFileSync } from 'fs';
+import { resolve } from 'path';
 
 /**
  * @param {string[]} modes
  * @param {string} filePath
  */
-function buildMode(modes, filePath) {
+function buildMode(modes: string[], filePath: string) {
   const interfaces = modes.map(mode => {
     const name = `${mode}Env`;
     const envs = {
@@ -30,3 +30,5 @@ function buildMode(modes, filePath) {
 }
 
 buildMode(['production', 'development', 'test'], resolve(process.cwd(), './types/env.d.ts'));
+
+

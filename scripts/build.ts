@@ -1,24 +1,23 @@
 #!/usr/bin/node
-console.time('Bundling time');
-const {build} = require('vite');
-const {join} = require('path');
 
-/** @type 'production' | 'development' | 'test' */
+import { build } from 'vite';
+import { join } from 'path';
+import { default as external } from '../config/external-packages';
+
 const mode = process.env.MODE || 'production';
 
 const configs = [
-  join(process.cwd(), 'config/main.vite.js'),
-  join(process.cwd(), 'config/preload.vite.js'),
-  join(process.cwd(), 'config/renderer.vite.js'),
+  join(process.cwd(), 'config/main.vite.ts'),
+  join(process.cwd(), 'config/preload.vite.ts'),
+  join(process.cwd(), 'config/renderer.vite.ts'),
 ];
-
 
 /**
  * Run `vite build` for config file
  * @param {string} configFile
  * @return {Promise<RollupOutput | RollupOutput[]>}
  */
-const buildByConfig = (configFile) => build({configFile, mode});
+const buildByConfig = (configFile: string) => build({configFile, mode});
 
 /**
  * Creates a separate package.json in which:
@@ -39,7 +38,7 @@ const generatePackageJson = () => {
     // Remove all bundled dependencies
     // Keep only `external` dependencies
     delete packageJson.devDependencies;
-    const {default: external} = require('../config/external-packages');
+
     for (const type of ['dependencies', 'optionalDependencies']) {
       if (packageJson[type] === undefined) {
         continue;
@@ -61,8 +60,8 @@ const generatePackageJson = () => {
   }
 
   // Create new package.json
-  const {writeFile} = require('fs/promises');
-  return writeFile(join(process.cwd(), 'dist/source/package.json'), JSON.stringify(packageJson));
+  const { writeFile } = require('fs/promises');
+  return writeFile(join(process.cwd(), 'dist/source/package.json'), JSON.stringify(packageJson, undefined, 2));
 };
 
 

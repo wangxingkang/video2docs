@@ -6,7 +6,6 @@
     "moduleResolution": "Node",
     "skipLibCheck": true,
     "strict": true,
-    "isolatedModules": true,
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true
   },

@@ -5,11 +5,14 @@
   "private": true,
   "scripts": {
     "start": "node ./scripts/watch.js",
+    "buildEnvTypes": "walrus run ./scripts/buildEnvTypes.ts",
+    "build": "walrus run ./scripts/build.ts",
     "release": "walrus release --skip-publish --skip-build"
   },
   "dependencies": {
     "@ffmpeg-installer/ffmpeg": "^1.1.0",
     "@pansy/hooks": "^2.3.0",
+    "@walrus/plugin-run": "^0.5.0",
     "antd": "4.16.13",
     "console-feed": "^3.2.2",
     "electron-updater": "4.3.9",
