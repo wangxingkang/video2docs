@@ -53,8 +53,9 @@ export function useWorkplaceService() {
       await handleStart(list[i], interval);
     }
 
-    message.success('全部处理完成！');
     consoleModal.closeModal();
+
+    message.success('全部处理完成！');
   }
 
   const handleStart = async (filePath: string, interval: number) => {
@@ -76,6 +77,9 @@ export function useWorkplaceService() {
       await electron.images2ppt(imgsDir);
 
       console.log(`PPT生成完成`);
+
+      /** 4. 删除所有的图片 */
+      electron.removeDir(imgsDir);
     }
   }
 

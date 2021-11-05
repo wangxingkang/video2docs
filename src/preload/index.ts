@@ -1,4 +1,5 @@
 import { contextBridge, ipcRenderer } from 'electron';
+import { rmdirSync } from 'fs';
 import {
   isDir,
   images2ppt,
@@ -35,6 +36,15 @@ const api = {
   onResponse: (channel: string, callback?: (result: any[]) => void) => {
     ipcRenderer.on(channel, (_, ...args) => {
       callback?.(args);
+    });
+  },
+  /**
+   * 删除目录
+   * @param dir 需要删除的目录
+   */
+  removeDir: (dir: string) => {
+    rmdirSync(dir, {
+      recursive: true,
     });
   }
 } as const;
