@@ -1,3 +1,5 @@
+import { join, parse } from 'path';
+
 const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
 const ffmpeg = require('fluent-ffmpeg');
 
@@ -22,14 +24,15 @@ export function getDuration (path: string) {
 }
 
 /**
- *
+ * 截取视频图片
  * @param path
  * @param interval
  */
-export function getImages(path: string, opts: { interval: number, duration: number }) {
-  return new Promise<boolean>((resolve, reject) => {
+export function getImages(filePath: string, opts: { interval: number, duration: number }) {
+  return new Promise<string>((resolve, reject) => {
     const { interval, duration } = opts;
     const timestamps: number[] = [];
+    const imgsDir = getImgsDir(filePath);
 
     let step = 0;
 
@@ -39,18 +42,29 @@ export function getImages(path: string, opts: { interval: number, duration: numb
       step = step + interval;
     }
 
-    ffmpeg(path)
+    ffmpeg(filePath)
       .on('end', function () {
-        resolve(true);
+        resolve(imgsDir);
       })
       .on('error', function () {
         reject()
       })
       .screenshots({
         timestamps,
-        filename: 'thumbnail-at-%s-seconds.png',
-        folder: '/Users/aqian/Downloads/imgs',
+        filename: '%s.png',
+        folder: imgsDir,
         size: '880x600'
       });
   })
+}
+
+/**
+ * 获取存放图片的目录
+ * @param filePath
+ * @returns
+ */
+export function getImgsDir(filePath: string) {
+  const fileInfo = parse(filePath);
+
+  return join(fileInfo.dir, `${fileInfo.name}_imgs`)
 }

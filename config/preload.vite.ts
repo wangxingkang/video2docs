@@ -12,6 +12,11 @@ export default defineConfig({
       '/@/': `${PRELOAD_DIR}/`,
     }
   },
+  optimizeDeps: {
+    exclude: [
+      'imagemin'
+    ]
+  },
   build: {
     target: `chrome${chrome}`,
     outDir: join(ROOT_DIR, 'dist/source/preload'),

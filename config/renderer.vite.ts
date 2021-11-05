@@ -15,6 +15,11 @@ export default defineConfig({
       '@/': `${RENDERER_DIR}/`,
     },
   },
+  optimizeDeps: {
+    exclude: [
+      'imagemin'
+    ]
+  },
   plugins: [
     reactRefresh(),
     vitePluginImp({

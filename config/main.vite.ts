@@ -12,6 +12,11 @@ export default defineConfig({
       '/@/': `${MAIN_DIR}/`,
     },
   },
+  optimizeDeps: {
+    exclude: [
+      'imagemin'
+    ]
+  },
   build: {
     target: `node${node}`,
     outDir: join(ROOT_DIR, 'dist/source/main'),

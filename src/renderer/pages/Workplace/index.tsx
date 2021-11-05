@@ -9,9 +9,8 @@ export default () => {
 
   return (
     <BasicLayout>
-      login page
-
       <Button onClick={workplaceService.handleStart}>开始</Button>
+      <Button onClick={workplaceService.handleReturn}>返回</Button>
     </BasicLayout>
   )
 }

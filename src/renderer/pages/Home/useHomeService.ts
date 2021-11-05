@@ -65,7 +65,7 @@ export function useHomeService() {
   const handleNext = () => {
     localStorage.setItem(STORAGE_KEYS.files, JSON.stringify(list));
 
-    history.push('/workplace')
+    history.push('/workplace');
   }
 
   return {

@@ -1,5 +1,5 @@
 import { readdirSync } from 'fs';
-import { join, extname, basename } from 'path';
+import { join, extname } from 'path';
 import { isDir } from '../';
 import { Result } from './types';
 

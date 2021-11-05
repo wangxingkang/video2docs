@@ -10,7 +10,8 @@ interface Options {
 
 interface Result {
   status: 'success' | 'error';
-  message: string;
+  message?: string;
+  data: string;
 }
 
 /**
@@ -30,13 +31,14 @@ export async function interceptImages(path: string, opts: Options = {}) {
     return result;
   }
 
-  const isSuccess = await getImages(path, {
+  const imgsDir = await getImages(path, {
     duration,
     interval,
   });
 
-  if (isSuccess) {
+  if (imgsDir) {
     result.status = 'success';
+    result.data = imgsDir;
   } else {
     result.status = 'error';
     result.message = '生成图片失败';

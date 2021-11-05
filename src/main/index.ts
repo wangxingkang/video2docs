@@ -33,7 +33,8 @@ if (!gotTheLock) {
       show: false,
       webPreferences: {
         preload: join(__dirname, '../preload/index.cjs.js'),
-        contextIsolation: env.MODE !== 'test', // Spectron tests can't work with contextIsolation: true
+        contextIsolation: env.MODE !== 'test',
+        experimentalFeatures: true,
         // enableRemoteModule: env.MODE === 'test',
         // sandbox: true,
       },
