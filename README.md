@@ -14,6 +14,8 @@
 4. 压缩所有图片
 5. 生成PPT
 
+**注意:** 目前仅支持`.mp4`、`.mov`格式的视频，如有其他格式的文件请提[issue](https://github.com/wangxingkang/video2docs/issues);
+
 ## 使用的技术或库
 
 - [electron](https://www.electronjs.org/) 构建跨平台的桌面应用程序
@@ -21,6 +23,8 @@
 - ffmpeg 视频处理的库
 - imagemin 压缩图片的库
 - images-pptx 将图片转为PPT
+- vite
+- antd
 
 ## 界面一览
 
@@ -28,4 +32,5 @@
 
 ## 后续计划
 
-[ ] 支持列表单个视频单独处理
+- [ ] 支持列表单个视频单独处理
+- [ ] 支持转换为PDF文件
