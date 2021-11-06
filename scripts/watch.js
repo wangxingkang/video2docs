@@ -1,12 +1,12 @@
 #!/usr/bin/node
 
-const {createServer, build, normalizePath} = require('vite');
-const {join, relative} = require('path');
+const { createServer, build, normalizePath } = require('vite');
+const { join, relative } = require('path');
 
 const mode = process.env.MODE || 'development';
 
 function startElectron() {
-  const {spawn} = require('child_process');
+  const { spawn } = require('child_process');
 
   const electronPath = require('electron');
 

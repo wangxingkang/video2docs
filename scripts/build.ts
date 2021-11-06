@@ -55,8 +55,8 @@ const generatePackageJson = () => {
   {
     // Set version based on current date in yy.mm.dd format
     // The year is calculated on the principle of a `getFullYear() - 2000`, so that in 2120 the version was `120` and not `20` 😅
-    const now = new Date;
-    packageJson.version = `${now.getFullYear() - 2000}.${now.getMonth() + 1}.${now.getDate()}`;
+    // const now = new Date;
+    // packageJson.version = `${now.getFullYear() - 2000}.${now.getMonth() + 1}.${now.getDate()}`;
   }
 
   // Create new package.json
