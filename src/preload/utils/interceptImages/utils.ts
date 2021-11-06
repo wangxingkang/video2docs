@@ -3,7 +3,11 @@ import { join, parse } from 'path';
 const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
 const ffmpeg = require('fluent-ffmpeg');
 
-ffmpeg.setFfmpegPath(ffmpegPath);
+if (process.env.NODE_ENV !== 'development') {
+  ffmpeg.setFfmpegPath(ffmpegPath.replace('app.asar', 'app.asar.unpacked'))
+} else {
+  ffmpeg.setFfmpegPath(ffmpegPath)
+}
 
 /**
  * 获取视频时长

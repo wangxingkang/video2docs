@@ -47,8 +47,6 @@ export function useHomeService() {
 
     const isDirResult = electron.isDir(dir);
 
-    console.log(isDirResult);
-
     if (!isDirResult) {
       message.warning('目录不存在，请检查！');
       return;

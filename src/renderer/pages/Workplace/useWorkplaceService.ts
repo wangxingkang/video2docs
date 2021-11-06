@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { Form, message } from 'antd';
-import { useModal } from '@pansy/hooks';
 import { Hook, Unhook } from 'console-feed';
 import type { Message } from 'console-feed/lib/definitions/Component'
 import { useHistory } from 'react-router-dom';
@@ -8,12 +7,12 @@ import { useElectron } from '@/hooks';
 import { STORAGE_KEYS } from '@/config';
 
 export function useWorkplaceService() {
+  const [process, setProcess] = useState<boolean>(false);
   const [logs, setLogs] = useState<Message[]>([]);
   const [list, setList] = useState<string[]>([]);
   const history = useHistory();
   const electron = useElectron();
   const [form] = Form.useForm();
-  const consoleModal = useModal();
 
   useEffect(
     () => {
@@ -38,10 +37,9 @@ export function useWorkplaceService() {
       }
     },
   []
-  )
+  );
 
   const handleStartAll = async () => {
-    consoleModal.openModal();
     const interval = form.getFieldValue('interval');
 
     if (typeof interval !== 'number' || !interval) {
@@ -52,10 +50,6 @@ export function useWorkplaceService() {
       console.info(`开始处理: ${i+1}/${list.length} >> ${list[i]}`);
       await handleStart(list[i], interval);
     }
-
-    consoleModal.closeModal();
-
-    message.success('全部处理完成！');
   }
 
   const handleStart = async (filePath: string, interval: number) => {
@@ -83,6 +77,26 @@ export function useWorkplaceService() {
     }
   }
 
+  const handleClickAll = () => {
+    setProcess(true);
+
+    handleStartAll()
+      .then(() => {
+        message.success('全部处理完成！');
+
+        setTimeout(() => {
+          setProcess(false);
+        }, 200)
+      })
+      .catch(() => {
+        message.error('处理失败！');
+
+        setTimeout(() => {
+          setProcess(false);
+        }, 200)
+      })
+  }
+
   const handleReturn = () => {
     history.push('/home');
   }
@@ -91,10 +105,11 @@ export function useWorkplaceService() {
     list,
     form,
     logs,
-    consoleModal,
+    process,
     getFileInfo: electron.getFileInfo,
     handleStart,
     handleStartAll,
     handleReturn,
+    handleClickAll,
   }
 }

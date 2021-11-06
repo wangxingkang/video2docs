@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
-import { Console } from 'console-feed';
-import { Form, Button, InputNumber, Space, Card, List, Modal } from 'antd';
+import { Form, Button, InputNumber, Space, Card, List } from 'antd';
 import { BasicLayout } from '@/layouts';
 import { useWorkplaceService } from './useWorkplaceService';
 import styles from './index.module.less';
@@ -34,12 +33,14 @@ export default () => {
                 <Button
                   type="primary"
                   size="small"
-                  onClick={workplaceService.handleStartAll}
+                  loading={workplaceService.process}
+                  onClick={workplaceService.handleClickAll}
                 >
                   开始
                 </Button>
                 <Button
                   size="small"
+                  disabled={workplaceService.process}
                   onClick={workplaceService.handleReturn}
                 >
                   返回
@@ -65,21 +66,6 @@ export default () => {
             />
           </Card>
         </div>
-
-        <Modal
-          visible={workplaceService.consoleModal.visible}
-          maskClosable={false}
-          closable={false}
-          footer={null}
-          width={600}
-          className={styles.modal}
-          getContainer={root.current as HTMLElement}
-          onCancel={workplaceService.consoleModal.closeModal}
-        >
-          <div className={styles.console}>
-            <Console logs={workplaceService.logs} variant="dark" />
-          </div>
-        </Modal>
       </div>
     </BasicLayout>
   )
