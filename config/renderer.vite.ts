@@ -9,6 +9,7 @@ const ROOT_DIR = process.cwd();
 const RENDERER_DIR = join(ROOT_DIR, './src/renderer');
 
 export default defineConfig({
+  base: './',
   root: RENDERER_DIR,
   resolve: {
     alias: {
