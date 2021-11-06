@@ -18,6 +18,7 @@ export default defineConfig({
     ]
   },
   build: {
+    sourcemap: true,
     target: `node${node}`,
     outDir: join(ROOT_DIR, 'dist/source/main'),
     assetsDir: '.',

@@ -1,14 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Form, message } from 'antd';
-import { Hook, Unhook } from 'console-feed';
-import type { Message } from 'console-feed/lib/definitions/Component'
 import { useHistory } from 'react-router-dom';
 import { useElectron } from '@/hooks';
 import { STORAGE_KEYS } from '@/config';
 
 export function useWorkplaceService() {
   const [process, setProcess] = useState<boolean>(false);
-  const [logs, setLogs] = useState<Message[]>([]);
   const [list, setList] = useState<string[]>([]);
   const history = useHistory();
   const electron = useElectron();
@@ -23,20 +20,6 @@ export function useWorkplaceService() {
       }
     },
     []
-  );
-
-  useEffect(
-    () => {
-      Hook(
-        window.console,
-        (log) => setLogs((currLogs) => [...currLogs, log] as any),
-        false
-      )
-      return () => {
-        Unhook(window.console as any)
-      }
-    },
-  []
   );
 
   const handleStartAll = async () => {
@@ -104,7 +87,6 @@ export function useWorkplaceService() {
   return {
     list,
     form,
-    logs,
     process,
     getFileInfo: electron.getFileInfo,
     handleStart,

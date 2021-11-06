@@ -18,6 +18,7 @@ export default defineConfig({
     ]
   },
   build: {
+    sourcemap: true,
     target: `chrome${chrome}`,
     outDir: join(ROOT_DIR, 'dist/source/preload'),
     assetsDir: '.',

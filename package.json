@@ -13,8 +13,8 @@
   },
   "dependencies": {
     "@ffmpeg-installer/ffmpeg": "^1.1.0",
+    "@ffprobe-installer/ffprobe": "1.2.0",
     "antd": "4.16.13",
-    "console-feed": "^3.2.2",
     "electron-updater": "4.3.9",
     "fluent-ffmpeg": "^2.1.2",
     "imagemin": "7.0.1",

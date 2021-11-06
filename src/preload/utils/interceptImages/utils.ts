@@ -1,12 +1,16 @@
 import { join, parse } from 'path';
 
 const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
+const ffprobePath = require('@ffprobe-installer/ffprobe').path;
+
 const ffmpeg = require('fluent-ffmpeg');
 
 if (process.env.NODE_ENV !== 'development') {
-  ffmpeg.setFfmpegPath(ffmpegPath.replace('app.asar', 'app.asar.unpacked'))
+  ffmpeg.setFfmpegPath(ffmpegPath.replace('app.asar', 'app.asar.unpacked'));
+  ffmpeg.setFfprobePath(ffprobePath.replace('app.asar', 'app.asar.unpacked'));
 } else {
-  ffmpeg.setFfmpegPath(ffmpegPath)
+  ffmpeg.setFfmpegPath(ffmpegPath);
+  ffmpeg.setFfprobePath(ffprobePath);
 }
 
 /**

@@ -45,6 +45,7 @@ export default defineConfig({
     },
   },
   build: {
+    sourcemap: true,
     target: `chrome${chrome}`,
     polyfillDynamicImport: false,
     base: '',
