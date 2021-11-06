@@ -45,7 +45,7 @@ const generatePackageJson = () => {
       }
 
       for (const key of Object.keys(packageJson[type])) {
-        if (!external.includes(key)) {
+        if (external.includes(key)) {
           delete packageJson[type][key];
         }
       }
