@@ -1,4 +1,4 @@
-import { app, dialog, ipcMain, BrowserWindow  } from 'electron';
+import { app, dialog, ipcMain, BrowserWindow } from 'electron';
 import { join } from 'path';
 import { format } from 'url';
 
