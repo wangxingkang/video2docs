@@ -1,7 +1,0 @@
-productName: "倩宝转换"
-directories:
-  output: "dist/app"
-  app: "dist/source"
-asar: true
-asarUnpack:
-  - "node_modules/@walrus/images-pptx"
