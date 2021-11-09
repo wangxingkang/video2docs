@@ -1,5 +1,5 @@
 import { join } from 'path';
-import { imageminPngquant } from '../imagemin-pngquant';
+import { imageminPngquant } from '@walrus/imagemin-pngquant';
 
 const imagemin = require('imagemin');
 
@@ -12,7 +12,6 @@ export async function compressImages(dir: string) {
         strip: true,
         quality: [0.6, 0.8],
         getPngquantPath: (path: string) => {
-          console.log(path);
           if (process.env.NODE_ENV !== 'development') {
             return path.replace('app.asar', 'app.asar.unpacked');
           }
