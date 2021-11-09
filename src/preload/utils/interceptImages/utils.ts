@@ -20,14 +20,17 @@ if (process.env.NODE_ENV !== 'development') {
  */
 export function getDuration (path: string) {
   return new Promise<number>((resolve, reject) => {
-    // @ts-ignore
-    ffmpeg(path).ffprobe((_, data) => {
-      if (data) {
-        resolve(data.format.duration);
-      } else {
-        reject()
-      }
-    })
+    try {
+      ffmpeg(path).ffprobe((_: unknown, data: any) => {
+        if (data) {
+          resolve(data.format.duration);
+        } else {
+          reject()
+        }
+      })
+    } catch (err) {
+      reject(err);
+    }
   });
 }
 

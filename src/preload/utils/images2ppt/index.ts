@@ -4,9 +4,7 @@ import { join, resolve, basename } from 'path';
 const imagesPptx = require('@walrus/images-pptx');
 
 export async function images2ppt(dir: string) {
-  // const minImagesDir = join(dir, 'min');
-
-  const minImagesDir = join(dir);
+  const minImagesDir = join(dir, 'min');
 
   const saveTo = resolve(dir, '../');
 

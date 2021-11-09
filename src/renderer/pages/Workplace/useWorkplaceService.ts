@@ -46,9 +46,9 @@ export function useWorkplaceService() {
     if (interceptResult.status === 'success' && interceptResult.data) {
       const imgsDir = interceptResult.data;
       /** 2. 压缩图片 */
-      // await electron.compressImages(imgsDir);
+      await electron.compressImages(imgsDir);
 
-      // console.log(`压缩图片完成`);
+      console.log(`压缩图片完成`);
 
       /** 3. 生成PPT */
       await electron.images2ppt(imgsDir);
@@ -56,7 +56,7 @@ export function useWorkplaceService() {
       console.log(`PPT生成完成`);
 
       /** 4. 删除所有的图片 */
-      electron.removeDir(imgsDir);
+      // electron.removeDir(imgsDir);
     }
   }
 
