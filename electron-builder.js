@@ -33,7 +33,7 @@ const config = {
     ]
   },
   nsis: {
-    oneClick: true,
+    oneClick: false,
     allowToChangeInstallationDirectory: true,
   },
   linux: {
