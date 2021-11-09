@@ -46,7 +46,11 @@ export function useWorkplaceService() {
     if (interceptResult.status === 'success' && interceptResult.data) {
       const imgsDir = interceptResult.data;
       /** 2. 压缩图片 */
-      await electron.compressImages(imgsDir);
+      const compressResult = await electron.compressImages(imgsDir);
+
+      if ((typeof compressResult?.status !== 'boolean') || !compressResult.status) {
+        return;
+      }
 
       console.log(`压缩图片完成`);
 

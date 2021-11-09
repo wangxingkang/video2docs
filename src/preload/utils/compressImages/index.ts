@@ -1,10 +1,11 @@
 import { join } from 'path';
 import { imageminPngquant } from '@walrus/imagemin-pngquant';
+import { winPath } from '../winPath';
 
 const imagemin = require('imagemin');
 
 export async function compressImages(dir: string) {
-  return await imagemin([join(dir, '*.{jpg,png}')], {
+  return await imagemin([winPath(join(dir, '*.{jpg,png}'))], {
     destination: join(dir, 'min'),
     plugins: [
       imageminPngquant({
