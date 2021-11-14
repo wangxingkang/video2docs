@@ -1,15 +1,15 @@
 import { readdirSync } from 'fs';
 import { join, extname } from 'path';
-import { isDir } from '../';
+import { isDir } from '..';
 import { Result } from './types';
 
 /**
- * 解析目录的文件
+ * 获取指定格式的文件路径的列表
  * @param dir
  * @param formats
  * @returns
  */
-export async function getFileTreeByDir(
+export async function getFilesByDir(
   rootDir: string,
   formats: string[],
 ) {

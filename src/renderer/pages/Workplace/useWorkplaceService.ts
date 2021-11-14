@@ -80,7 +80,7 @@ export function useWorkplaceService() {
       console.log(`PPT生成完成`);
 
       /** 5. 删除所有的图片 */
-      // electron.removeDir(imgsDir);
+      electron.removeDir(imgsDir);
     }
   }
 

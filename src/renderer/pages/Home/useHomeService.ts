@@ -52,7 +52,7 @@ export function useHomeService() {
       return;
     }
 
-    const fileTreeResult = await electron.getFileTreeByDir(dir, videoFormats);
+    const fileTreeResult = await electron.getFilesByDir(dir, videoFormats);
 
     if (fileTreeResult.status === 'error') {
       message.warning(fileTreeResult.message);

@@ -3,7 +3,7 @@ import { rmdirSync, readFileSync, rmSync } from 'fs';
 import {
   isDir,
   images2ppt,
-  getFileTreeByDir,
+  getFilesByDir,
   getFileInfo,
   interceptImages,
   compressImages,
@@ -25,7 +25,7 @@ const api = {
   /**
    * 获取目录下的文件
    */
-  getFileTreeByDir,
+  getFilesByDir,
   /**
    * 向主进程发送异步消息
    */
