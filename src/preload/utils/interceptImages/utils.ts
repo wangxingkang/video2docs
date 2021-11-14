@@ -50,7 +50,11 @@ export function getImages(filePath: string, opts: { interval: number, duration: 
     while(step < duration) {
       timestamps.push(step);
 
-      step = step + interval;
+      step = +(step + interval).toFixed(2);
+    }
+
+    if (timestamps[timestamps.length - 1] !== duration) {
+      timestamps.push(duration);
     }
 
     ffmpeg(filePath)

@@ -1,12 +1,13 @@
 import { contextBridge, ipcRenderer } from 'electron';
-import { rmdirSync } from 'fs';
+import { rmdirSync, readFileSync, rmSync } from 'fs';
 import {
   isDir,
   images2ppt,
   getFileTreeByDir,
   getFileInfo,
   interceptImages,
-  compressImages
+  compressImages,
+  getImgsPathByDir
 } from './utils';
 
 const API_KEY = 'electron';
@@ -14,10 +15,13 @@ const API_KEY = 'electron';
 const api = {
   versions: process.versions,
   isDir,
+  readFileSync,
   images2ppt,
   getFileInfo,
   compressImages,
   interceptImages,
+  getImgsPathByDir,
+  removeFile: rmSync,
   /**
    * 获取目录下的文件
    */

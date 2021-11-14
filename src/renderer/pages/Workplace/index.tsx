@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Form, Button, InputNumber, Space, Card, List } from 'antd';
+import { Form, Button, InputNumber, Space, Card, List, Switch } from 'antd';
 import { BasicLayout } from '@/layouts';
 import { useWorkplaceService } from './useWorkplaceService';
 import styles from './index.module.less';
@@ -20,7 +20,19 @@ export default () => {
                   label="间隔时间(S)"
                   initialValue={1}
                 >
-                  <InputNumber min={0.5} style={{ width: 100 }} placeholder="请输入需要处理的视频目录" />
+                  <InputNumber
+                    min={0.5}
+                    style={{ width: 100 }}
+                    placeholder="请输入需要处理的视频目录"
+                  />
+                </Form.Item>
+                <Form.Item
+                  name="unique"
+                  label="是否去重"
+                  initialValue={false}
+                  valuePropName="checked"
+                >
+                  <Switch />
                 </Form.Item>
               </Space>
             </Form.Item>
